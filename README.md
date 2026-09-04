@@ -1,2 +1,52 @@
-# ExternalEesolutionControl
-Switching resolution on Android devices that do not support active switching of external screen resolution
+# 外接屏分辨率控制
+
+外接屏分辨率控制是一款用于 Android 外接显示器的分辨率与刷新率控制工具。它通过底层注入 SurfaceFlinger/HWC，在系统常规显示设置无法切换时，尝试强制使用用户选择的显示模式。
+
+## 功能
+
+- 查看当前连接的外接屏及其支持的分辨率、刷新率。
+- 选择目标显示模式并立即应用。
+- 保存配置，在系统启动或外接屏重新插入后尝试自动恢复。
+- Magisk/KernelSU 模块内嵌应用，安装一个 ZIP 即可完成模块和应用安装。
+- 不需要 Xposed/LSPosed。
+
+## 使用要求
+
+使用前请确认：
+
+- Android 设备已经解锁并获得稳定的 Root 权限。
+- `su` 命令可用，并允许本应用执行 Root 命令。
+- 已安装 Magisk 或 KernelSU，并支持安装模块。
+- 设备使用 64 位 ARM（arm64-v8a）环境。
+- 外接屏通过设备支持的有线接口连接，并且系统能够识别该显示器。
+- 用户具备通过 Recovery、Fastboot、ADB 或其他方式自行救援手机的能力。
+
+本项目主要针对 Android 14 及以上版本开发，并在 Android 16、KernelSU 环境中测试。不同厂商的 SurfaceFlinger、Composer HAL 和 SELinux 实现可能存在差异，不能保证所有设备兼容。
+
+## 安装
+
+发布时只需提供编译后的 ZIP；APK、底层注入器及模块脚本均已内嵌在 ZIP 中。
+
+1. 下载编译后的 `ExternalResolutionControl-Magisk-*.zip`。
+2. 在 Magisk 或 KernelSU 中安装该 ZIP 模块。
+3. 模块安装时会自动安装内嵌的应用，不需要另行安装 APK。
+4. 重启设备，使开机服务正式生效。
+5. 打开“外接屏分辨率控制”，授予 Root 权限，连接外接屏后选择模式并保存。
+
+模块安装包包含底层注入器和应用。应用名称为“外接屏分辨率控制”，包名为 `io.dixtdf.externalresolutioncontrol`。
+
+## 卸载与恢复
+
+- 优先在 Magisk/KernelSU 中禁用模块并重启。
+- 如果系统出现黑屏、显示异常、无法进入桌面等问题，请通过 Recovery、ADB 或 Magisk/KernelSU 的安全模式删除或禁用模块。
+- 不要在不清楚恢复步骤的情况下尝试高风险分辨率或刷新率组合。
+
+## 免责条款
+
+本软件免费提供，仅供学习、研究和个人使用。软件按“现状”提供，作者不对其安全性、稳定性、兼容性、可用性或任何特定用途作出保证。
+
+由于本软件需要 Root 权限，并会对 SurfaceFlinger、Composer/HWC 以及外接显示输出进行底层操作，使用它可能导致但不限于：黑屏、花屏、闪屏、显示器无信号、系统卡死、应用崩溃、数据丢失、无法开机、Bootloop、系统分区或设备损坏。
+
+用户必须自行承担安装、配置、运行、升级和卸载本软件的一切风险。因使用、误用、修改、传播本软件或由本软件产生的任何直接或间接后果，作者及贡献者均不承担责任，包括但不限于设备损坏、系统故障、数据丢失、保修失效以及其他经济或非经济损失。
+
+只有具备手机自救能力、能够自行处理 Bootloop/黑屏/模块冲突问题的用户才应使用本软件。安装即表示你已阅读、理解并同意以上条款。
