@@ -1,6 +1,7 @@
 # 外接屏分辨率控制
 
 外接屏分辨率控制是一款用于 Android 外接显示器的分辨率与刷新率控制工具。它通过底层注入 SurfaceFlinger/HWC，在系统常规显示设置无法切换时，尝试强制使用用户选择的显示模式。
+<img width="1440" height="3168" alt="ae9aced92aea82ed1fdf72a87367c2d7" src="https://github.com/user-attachments/assets/7839d081-e691-4946-86ba-b4c7d801a107" />
 
 ## 功能
 
