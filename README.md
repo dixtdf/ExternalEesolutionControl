@@ -1,3 +1,6 @@
+# 建议使用实现，该实现不建议使用
+https://github.com/dixtdf/DpDisplayControl
+
 # 外接屏分辨率控制
 
 外接屏分辨率控制是一款用于 Android 外接显示器的分辨率与刷新率控制工具。它通过底层注入 SurfaceFlinger/HWC，在系统常规显示设置无法切换时，尝试强制使用用户选择的显示模式。<br/>
